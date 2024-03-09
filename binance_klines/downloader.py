@@ -150,6 +150,8 @@ class BinanceKLinesDownloader:
             self._logger.info("Download in progress: %s", symbol)
             since = start_date_timestamp
             while since < end_date_timestamp:
+                self._logger.info("Downloading from: %s", datetime.datetime.fromtimestamp(since / 1000))
+
                 klines_batch = await self._fetch_ohlcv(
                     symbol, timeframe=timeframe, start=since, end=end_date_timestamp
                 )
