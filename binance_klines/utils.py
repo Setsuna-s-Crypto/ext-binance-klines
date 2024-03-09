@@ -13,7 +13,7 @@ def write_data_to_file(data: list[list], output_filename: Path):
     for ohlcv in data:
         row = dict(zip(OHLCV_FIELDNAMES, ohlcv))
         # Convert the timestamp (in ms) to datetime (e.g.: 2020-01-01 00:00:00)
-        row["timestamp"] = datetime.datetime.fromtimestamp(row["timestamp"] / 1000).strftime(
+        row["timestamp"] = datetime.datetime.fromtimestamp(row["timestamp"] / 1000, tz=datetime.UTC).strftime(
             "%Y-%m-%d %H:%M:%S"
         )
 
